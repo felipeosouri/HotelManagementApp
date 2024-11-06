@@ -30,3 +30,37 @@ Clona el repositorio desde GitHub:
 ```bash
 git clone https://github.com/felipeosouri/HotelManagementApp.git
 cd HotelManagementAPI
+```
+
+
+### 3. Configurar la Cadena de Conexión
+
+Clona el repositorio desde GitHub:
+
+```bash
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=YOUR_SERVER_NAME;Database=HotelManagementDB;Trusted_Connection=True;MultipleActiveResultSets=true"
+  },
+  ...
+}
+```
+
+Reemplaza YOUR_SERVER_NAME con el nombre de tu servidor SQL. Si usas autenticación de SQL Server en lugar de autenticación integrada, agrega User Id=YOUR_USER;Password=YOUR_PASSWORD;.
+
+### 4. Aplicar Migraciones para Crear la Base de Datos
+
+Ejecuta los siguientes comandos en la Consola del Administrador de Paquetes de Visual Studio o en la terminal para aplicar las migraciones y crear el esquema de la base de datos:
+
+```bash
+dotnet ef migrations add InitialCreate --project HotelManagement.Infrastructure --startup-project HotelManagement.API
+dotnet ef database update --project HotelManagement.Infrastructure --startup-project HotelManagement.API
+```
+### 5. Ejecutar el Proyecto
+
+Inicia la API, Puedes probar los endpoints de la API utilizando Postman o cualquier herramienta de cliente HTTP:
+
+```bash
+dotnet run --project HotelManagement.API
+```
+
